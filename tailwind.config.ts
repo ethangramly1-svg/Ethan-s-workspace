@@ -51,6 +51,19 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        ember: {
+          50: "#fff7ed",
+          100: "#ffedd5",
+          200: "#fed7aa",
+          300: "#fdba74",
+          400: "#fb923c",
+          500: "#f97316",
+          600: "#ea580c",
+          700: "#c2410c",
+          800: "#9a3412",
+          900: "#7c2d12",
+          950: "#431407",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -66,6 +79,15 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        flicker: {
+          "0%, 100%": { opacity: "1", filter: "brightness(1)" },
+          "50%": { opacity: "0.85", filter: "brightness(1.15)" },
+        },
+        ember: {
+          "0%": { transform: "translateY(0) scale(1)", opacity: "0" },
+          "20%": { opacity: "0.7" },
+          "100%": { transform: "translateY(-120px) scale(0.4)", opacity: "0" },
+        },
         spotlight: {
           "0%": {
             opacity: "0",
@@ -80,6 +102,8 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        flicker: "flicker 2.4s ease-in-out infinite",
+        ember: "ember 3.5s linear infinite",
         spotlight: "spotlight 2s ease .75s 1 forwards",
       },
     },

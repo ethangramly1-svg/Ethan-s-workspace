@@ -1,39 +1,22 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import ScrollExpandMedia from '@/components/blocks/scroll-expansion-hero';
+import { useEffect } from "react";
+import ScrollExpandMedia from "@/components/blocks/scroll-expansion-hero";
+import { Flame } from "lucide-react";
 
 const heroMedia = {
-  src: 'https://images.unsplash.com/photo-1682687982501-1e58ab814714?q=80&w=1280&auto=format&fit=crop',
+  src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1280&auto=format&fit=crop",
   background:
-    'https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop',
-  title: 'Locked In',
-  date: 'A focused workspace',
-  scrollToExpand: 'Scroll to expand',
-  about: {
-    overview:
-      "This is Ethan's workspace — a playground for interactive UI experiments. As you scroll, the cover image expands to fill the screen, easing you into the rest of the page.",
-    conclusion:
-      'Keep scrolling for an interactive 3D scene powered by Spline, dropped inside a shadcn card with an Aceternity spotlight on top.',
-  },
-};
-
-const HeroContent = () => {
-  return (
-    <div className="max-w-4xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-white">About this page</h2>
-      <p className="text-lg mb-6 text-neutral-200">{heroMedia.about.overview}</p>
-      <p className="text-lg mb-6 text-neutral-200">
-        {heroMedia.about.conclusion}
-      </p>
-    </div>
-  );
+    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1920&auto=format&fit=crop",
+  title: "Burn It Down",
+  date: "Fit Club Vegas · Northwest",
+  scrollToExpand: "Scroll to ignite",
 };
 
 export const ScrollHero = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    const resetEvent = new Event('resetSection');
+    const resetEvent = new Event("resetSection");
     window.dispatchEvent(resetEvent);
   }, []);
 
@@ -47,7 +30,24 @@ export const ScrollHero = () => {
       scrollToExpand={heroMedia.scrollToExpand}
       textBlend
     >
-      <HeroContent />
+      <div className="max-w-4xl mx-auto text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-ember-500/10 border border-ember-500/30 text-ember-700 dark:text-ember-300 text-sm mb-6">
+          <Flame className="h-4 w-4" />
+          4.8 ★ · 70 reviews · 1922 Rock Springs Dr
+        </div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 fire-text">
+          Fat doesn&apos;t stand a chance.
+        </h2>
+        <p className="text-lg mb-6 text-foreground/90">
+          Welcome to Fit Club Vegas-NW. Below, you&apos;ll find an interactive 3D
+          fat-burner. Tap any body part — face, stomach, glutes — and we&apos;ll
+          tell you exactly which workout torches it.
+        </p>
+        <p className="text-base text-foreground/60">
+          Bootcamp · Personal Training · Knowledgeable coaches · Coach Gavin
+          approved.
+        </p>
+      </div>
     </ScrollExpandMedia>
   );
 };
