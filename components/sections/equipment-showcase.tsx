@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Dumbbell } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 const items = [
   {
@@ -62,7 +63,7 @@ function EquipmentTile({
     <div className="group relative overflow-hidden rounded-2xl border border-ember-700/30 bg-black/60 transition-colors hover:border-ember-500/60">
       <div className="relative aspect-[4/3] w-full bg-black">
         <Image
-          src={src}
+          src={asset(src)}
           alt={label}
           fill
           sizes="(min-width: 768px) 33vw, 100vw"

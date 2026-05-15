@@ -7,6 +7,9 @@ const nextConfig = {
   basePath: isPagesBuild ? repoBase : '',
   assetPrefix: isPagesBuild ? `${repoBase}/` : '',
   trailingSlash: isPagesBuild,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isPagesBuild ? repoBase : '',
+  },
   images: {
     unoptimized: isPagesBuild,
     remotePatterns: [

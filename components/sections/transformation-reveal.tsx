@@ -4,8 +4,9 @@ import { useRef, useState } from "react";
 import { Flame, Phone, MousePointer2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Spotlight } from "@/components/ui/spotlight";
+import { asset } from "@/lib/asset";
 
-const COMPOSITE = "/transformation.png";
+const COMPOSITE = asset("/transformation.png");
 const RADIUS = 110;
 
 export function TransformationReveal() {
