@@ -5,23 +5,17 @@ import { Dumbbell } from "lucide-react";
 
 const items = [
   {
-    src: "/equipment/dumbbells.jpg",
-    fallback:
-      "https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?q=80&w=900&auto=format&fit=crop",
+    src: "/equipment/dumbbells.png",
     label: "Dumbbells",
     copy: "5–120 lb. The bread and butter of hypertrophy.",
   },
   {
-    src: "/equipment/kettlebell.jpg",
-    fallback:
-      "https://images.unsplash.com/photo-1604247584233-99c80a8ea2c1?q=80&w=900&auto=format&fit=crop",
+    src: "/equipment/kettlebell.png",
     label: "Kettlebells",
     copy: "Swings, snatches, get-ups. Cardio meets strength.",
   },
   {
     src: "/equipment/barbell.jpg",
-    fallback:
-      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=900&auto=format&fit=crop",
     label: "Barbells",
     copy: "Squat. Bench. Deadlift. The unkillable big three.",
   },
@@ -57,31 +51,25 @@ export function EquipmentShowcase() {
 
 function EquipmentTile({
   src,
-  fallback,
   label,
   copy,
 }: {
   src: string;
-  fallback: string;
   label: string;
   copy: string;
 }) {
   return (
     <div className="group relative overflow-hidden rounded-2xl border border-ember-700/30 bg-black/60 transition-colors hover:border-ember-500/60">
-      <div className="relative aspect-[4/3] w-full">
+      <div className="relative aspect-[4/3] w-full bg-black">
         <Image
           src={src}
           alt={label}
           fill
           sizes="(min-width: 768px) 33vw, 100vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          onError={(e) => {
-            const img = e.currentTarget as HTMLImageElement;
-            if (img.src !== fallback) img.src = fallback;
-          }}
+          className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
           unoptimized
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/85 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
           <h3 className="text-ember-300 font-bold text-xl drop-shadow">
             {label}
