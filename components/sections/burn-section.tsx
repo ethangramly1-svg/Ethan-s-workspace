@@ -1,12 +1,24 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { Flame, Target, ChevronRight } from "lucide-react";
-import { Body3D } from "@/components/ui/body-3d";
 import { Card } from "@/components/ui/card";
 import { Spotlight } from "@/components/ui/spotlight";
 import { BODY_PARTS, BODY_PART_ORDER, type BodyPartId } from "@/lib/workouts";
+
+const Body3D = dynamic(
+  () => import("@/components/ui/body-3d").then((m) => m.Body3D),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-full flex items-center justify-center">
+        <span className="loader" />
+      </div>
+    ),
+  },
+);
 
 export function BurnSection() {
   const [selected, setSelected] = useState<BodyPartId | null>("abs");

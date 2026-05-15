@@ -1,9 +1,8 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { Suspense, useRef, useState } from "react";
-import * as THREE from "three";
+import { Suspense, useState } from "react";
 import type { BodyPartId } from "@/lib/workouts";
 
 interface BodyPartProps {
@@ -67,14 +66,6 @@ interface BodyProps {
 }
 
 function Body({ selected, onSelect, onHover }: BodyProps) {
-  const groupRef = useRef<THREE.Group>(null);
-
-  useFrame((_, delta) => {
-    if (groupRef.current && !selected) {
-      groupRef.current.rotation.y += delta * 0.15;
-    }
-  });
-
   const partMaterial = (
     color: string,
     emissiveIntensity: number,
@@ -90,7 +81,7 @@ function Body({ selected, onSelect, onHover }: BodyProps) {
   );
 
   return (
-    <group ref={groupRef} position={[0, -0.2, 0]}>
+    <group position={[0, -0.2, 0]}>
       <BodyPart id="face" selected={selected} onSelect={onSelect} onHover={onHover}>
         {({ emissiveIntensity, color }) => (
           <mesh position={[0, 3.5, 0]} castShadow>
@@ -258,6 +249,8 @@ export function Body3D({ selected, onSelect, onHover }: Body3DProps) {
   return (
     <Canvas
       shadows
+      frameloop="demand"
+      dpr={[1, 1.5]}
       camera={{ position: [0, 0.5, 9], fov: 42 }}
       className="!h-full !w-full"
     >
