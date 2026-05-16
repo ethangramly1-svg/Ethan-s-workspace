@@ -4,10 +4,13 @@ import { useRef, useState } from "react";
 import { Flame, Phone, MousePointer2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Spotlight } from "@/components/ui/spotlight";
+import { Embers } from "@/components/ui/embers";
+import { WordReveal } from "@/components/ui/word-reveal";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 import { asset } from "@/lib/asset";
 
 const COMPOSITE = asset("/transformation.png");
-const RADIUS = 110;
+const RADIUS = 80;
 
 export function TransformationReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -30,8 +33,9 @@ export function TransformationReveal() {
   });
 
   return (
-    <section className="w-full px-4 md:px-8 py-20 bg-background">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative w-full px-4 md:px-8 py-20 bg-background overflow-hidden">
+      <Embers count={14} />
+      <div className="max-w-6xl mx-auto relative z-10">
         <Card className="bg-black/[0.96] border-ember-700/30 ember-glow overflow-hidden">
           <Spotlight className="-top-32 left-0" fill="#fb923c" />
 
@@ -41,11 +45,16 @@ export function TransformationReveal() {
                 <Flame className="h-4 w-4" />
                 See the transformation
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold fire-text mb-4">
-                Hover the body.
-                <br />
-                See the future you.
-              </h2>
+              <WordReveal
+                text="Hover the body."
+                as="h2"
+                className="block text-4xl md:text-5xl font-bold fire-text leading-[1.05]"
+              />
+              <WordReveal
+                text="See the future you."
+                as="h2"
+                className="block text-4xl md:text-5xl font-bold fire-text leading-[1.05] mb-4"
+              />
               <p className="text-ember-100/80 text-lg mb-6">
                 Move your cursor over the photo. Wherever you point, the
                 version of you on the other side of the work shows through.
@@ -54,13 +63,13 @@ export function TransformationReveal() {
                 <MousePointer2 className="h-4 w-4" />
                 <span>Drag your cursor across the photo</span>
               </div>
-              <a
+              <MagneticButton
                 href="tel:+17252045655"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ember-500 text-white font-semibold hover:bg-ember-400 transition-colors w-fit shadow-[0_0_30px_rgba(249,115,22,0.55)]"
               >
                 <Phone className="h-4 w-4" />
                 Start your transformation
-              </a>
+              </MagneticButton>
             </div>
 
             <div className="relative bg-black flex items-center justify-center p-4 md:p-6">
@@ -72,7 +81,7 @@ export function TransformationReveal() {
                   update(e.touches[0].clientX, e.touches[0].clientY)
                 }
                 onTouchEnd={() => setPos(null)}
-                className="relative aspect-[1/2] w-full max-w-[320px] overflow-hidden rounded-xl border border-ember-700/30 select-none touch-none"
+                className="sharpen relative aspect-[1/2] w-full max-w-[240px] overflow-hidden rounded-xl border border-ember-700/30 select-none touch-none"
                 style={{ cursor: pos ? "none" : "crosshair" }}
               >
                 <div style={layerStyle("left")} aria-label="Before" />
@@ -112,7 +121,7 @@ export function TransformationReveal() {
                   <div
                     className="pointer-events-none absolute px-2 py-0.5 rounded-md bg-ember-500 text-white text-[10px] font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(249,115,22,0.6)]"
                     style={{
-                      left: Math.min(Math.max(pos.x - 22, 8), 200),
+                      left: Math.min(Math.max(pos.x - 22, 8), 160),
                       top: Math.max(pos.y - RADIUS - 26, 8),
                     }}
                   >
